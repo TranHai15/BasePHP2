@@ -1,0 +1,12 @@
+<?php $_shouldextend[1]=1; ?>
+
+<?php $this->startSection('title', 'Dashboard'); ?>
+
+<?php $this->startSection('content'); ?>
+ <div class="container">
+ <h1 class="mt-4">Dashboard</h1>
+ <p>Chào mừng bạn đến với trang quản trị.</p>
+ </div>
+<?php $this->stopSection(); ?>
+
+<?php if (isset($_shouldextend[1])) { echo $this->runChild('layouts.admin'); } ?>

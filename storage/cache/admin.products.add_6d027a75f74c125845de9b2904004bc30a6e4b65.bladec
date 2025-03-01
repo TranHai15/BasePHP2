@@ -1,0 +1,32 @@
+<?php $_shouldextend[1]=1; ?>
+
+<?php $this->startSection('content'); ?>
+
+<h1>Thêm sản phẩm</h1>
+
+<form action="<?php echo \htmlentities(route('admin/products/store')??'', ENT_QUOTES, 'UTF-8', false); ?>" method="post" enctype="multipart/form-data">
+
+ <label for="">Name</label>
+ <input type="text" name="name" placeholder="Nhập Name " id="">
+ <p><?php echo \htmlentities($error['name']??""??'', ENT_QUOTES, 'UTF-8', false); ?></p>
+ <br>
+ <label for="Img">Image</label>
+ <input type="file" name="image" id="">
+ <br>
+ <label for="">Mô tả</label>
+ <textarea name="description" id="" cols="3" ></textarea>
+ <p><?php echo \htmlentities($error['description']??""??'', ENT_QUOTES, 'UTF-8', false); ?></p>
+ <br>
+ <select name="category" id="">
+ <?php $__currentLoopData = $categories; $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $categorie): $loop = $this->incrementLoopIndices();  ?>
+ <option value="<?php echo \htmlentities($categorie['id']??'', ENT_QUOTES, 'UTF-8', false); ?>"><?php echo \htmlentities($categorie['name']??'', ENT_QUOTES, 'UTF-8', false); ?></option>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ </select>
+ <br>
+ <button type="reset">Đặt lại</button>
+ <button type="submit">Thêm</button>
+</form>
+
+<?php $this->stopSection(); ?>
+<?php if (isset($_shouldextend[1])) { echo $this->runChild('layouts.admin'); } ?>
